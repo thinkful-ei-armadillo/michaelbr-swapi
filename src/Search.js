@@ -4,7 +4,8 @@ export default class Search extends Component{
     state = {
         query: '',
         qType: '',
-        hasErr: false
+        hasErr: false,
+        loading: false,
     }
     
     handleInput = (term) => {
@@ -26,6 +27,10 @@ export default class Search extends Component{
             this.setState({hasErr: true});
             return
         }
+        if(this.state.loading){
+            return
+        }
+        this.setState({loading: true});
         const url = `https://swapi.co/api/${this.state.qType}/?search=${this.state.query}`;
         console.log(url)
         fetch(url)
@@ -39,8 +44,12 @@ export default class Search extends Component{
             })
             .then(res => {
                 this.setResults(res.results);
+                this.setState({loading: false});
             })
-            .catch(err => alert(err.message));
+            .catch(err => {
+                alert(err.message)
+                this.setState({loading: false});
+            })
     }
 
     setResults = (results) => {
@@ -72,7 +81,7 @@ export default class Search extends Component{
                     <option value='species'>Species</option>
                     <option value='planets'>Planets</option>
                 </select>
-                <button type="submit">Submit</button>
+                <button type="submit">{this.state.loading ? 'Loading...' : 'Search'}</button>
                 {errHtml}
             </form>
         )

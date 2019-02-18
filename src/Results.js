@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 
 export default class Results extends Component{
     render(){
-        // if(this.props.results.length === 0 && user has searched for something already){
+        if(!this.props.results){
+            return ''
+        }
         if(this.props.results.length === 0){
             return(
                 <section className="results">

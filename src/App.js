@@ -6,7 +6,7 @@ import Error from './Error';
 
 export default class App extends Component {
   state = {
-    results: [],
+    results: null,
   }
 
   handleResults = (result) => {
