@@ -1,3 +1,3 @@
-### Star Wars API Search
+# Star Wars API Search
 
-# [Deployed with Zeit](https://mbramble-swapi-search.now.sh)
+## [Deployed with Zeit](https://mbramble-swapi-search.now.sh)
