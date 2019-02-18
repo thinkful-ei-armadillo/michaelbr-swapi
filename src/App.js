@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Search from './Search';
+import Results from './Results';
+import Error from './Error';
+//import './styles/app.css'
 
-class App extends Component {
+export default class App extends Component {
+  state = {
+    results: [],
+  }
+
+  handleResults = (result) => {
+    this.setState({results: result})
+  }
+
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+      <div className='App'>
+        <header className="header" role="heading">
+          <h1>Star Wars API Search</h1>
         </header>
-      </div>
+        <main>
+          <Error>
+            <Search results={this.handleResults} />
+            <Results results={this.state.results} />
+          </Error>
+        </main>
+      </div>     
     );
   }
 }
-
-export default App;
