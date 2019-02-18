@@ -1,0 +1,15 @@
+{
+    "version": 1,
+    "alias": "mbramble-swapi-search",
+    "name": "mbramble-swapi",
+    "routes": [
+        {
+          "src": "^/static/(.*)",
+          "dest": "/static/$1"
+        },
+        {
+          "src": ".*",
+          "dest": "/index.html"
+        }
+    ]
+  }
